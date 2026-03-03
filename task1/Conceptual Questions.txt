@@ -1,0 +1,19 @@
+Q1. What is the difference between a List<int> and a List<dynamic> in Dart? Why is it usually better to use a typed list like List<int>?
+
+A List<int> hold integers only while List<dynamic> can hold values of any type (like strings, double or objects) which can cause error in runtime if we are not careful for example if we accidentally put in the wrong type it can cause problems so using List<int> is generally safer because it uses type safety. and it is more readable and maintain. 
+
+Q2. In your findMax() function, why is it important to initialize your 'running maximum' variable to the first element of the list rather than to 0 or to a very small number? What could go wrong with the other approaches?
+
+Because if we initialized it to 0 or a small number it could fail in cases the numbers are negative or smaller than our initialized number and that could lead to giving us our initialized number as the maximum.
+
+Q3. Your calculateAverage() function calls calculateSum() internally. What software design principle does this demonstrate, and why is reusing existing functions preferable to duplicating code?
+
+This shows the principle of code reuse and modularity. Instead of repeating the same code twice we can use the existing code this makes our code cleaner, avoids repetition and reduces chances of error and also if we want to make change we only need to update one function. 
+
+Q4. Describe in plain English what the for-in loop syntax does in Dart. How is it different from a traditional for loop with an index? When would you prefer one over the other?
+
+for-in loop goes through each element in a list directly with out index and this is useful simple and more easier to read when we just want to process every value. traditional for loop gives us more control using index we can skip or access specific positions using index. we prefer for‑in when we only care about the values, and a traditional for loop when we need the index as well.
+
+Q5. If someone calls your findMax() function with an empty list, what happens? How could you modify the function to handle that case safely?
+
+After reading this question, I added null safety by checking if the list is empty  before running the loop. If it is empty, the function prints an error message  and returns null. This way, the program doesn’t crash and handles the case safely.
