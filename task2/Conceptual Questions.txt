@@ -1,0 +1,29 @@
+Q6. What is the difference between a synchronous function and an asynchronous function in Dart? In your Calculator class, why is divide() synchronous while computeAsync() is asynchronous?
+
+A synchronous function runs immediately and returns its result right away, while an asynchronous function can pause and resume later, usually because it’s waiting for something like a delay or I/O. In my Calculator class, divide() is synchronous because dividing two numbers is instant — there’s no waiting involved. On the other hand, computeAsync() is asynchronous because I deliberately added a delay to simulate a longer‑running task, so it needs async and await to handle that pause.
+
+Q7. Explain the purpose of the await keyword in Dart. What happens if you forget to use await when calling an async function that returns a Future? What does your program print instead of the result?
+
+The await keyword tells Dart to wait for an asynchronous function to finish before moving on. If I forget to use await when calling an async function that returns a Future, my program won’t print the actual result — it will just print something like Instance of 'Future<double>'. That’s because without await, Dart doesn’t unwrap the future into the final value.
+ 
+Q8. What is the purpose of the try-catch block in your displayResult() method? What would happen if you removed it and then called displayResult(10, 0, 'divide')?
+ 
+The try‑catch block in displayResult() is there to handle errors gracefully. For example, if I try to divide by zero, the program would normally crash. With try‑catch, I can catch that exception and print a friendly error message instead of stopping the whole program. If I removed the try‑catch and then called displayResult(10, 0, 'divide'), the program would throw an uncaught exception and terminate abruptly.
+ 
+
+Q9. Why is it good design to have divide() throw an ArgumentError rather than simply returning 0 or printing an error inside the divide() method itself? What principle of function design does this reflect?
+ 
+It’s better design for divide() to throw an ArgumentError instead of silently returning 0 or printing an error inside the method. Returning 0 would be misleading because 10 ÷ 0 is not actually 0. Throwing an error makes the problem clear to the caller and lets them decide how to handle it. This reflects the principle of separation of concerns — the function focuses on doing its calculation correctly, and error handling is left to the caller.
+
+Q10. What does the async keyword on main() allow you to do? Could this assignment have been written without making main() async? Explain your answer.
+
+Marking main() as async allows me to use await inside it. Without async, I couldn’t wait for my asynchronous calculator methods to finish before moving on. Technically, I could have written the assignment without making main() async by chaining .then() calls on futures, but that would make the code harder to read. Using async and await makes the flow of the program much clearer and easier to follow.
+ 
+ 
+ 
+ 
+
+
+ 
+ 
+
